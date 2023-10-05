@@ -14,6 +14,7 @@ import lombok.experimental.FieldDefaults;
 @Table(name = "student_info")
 public class Student {
     @Id   //this attribute is my primary key
+    //data type of GenerationType --> Enum
     @GeneratedValue(strategy =  GenerationType.IDENTITY)  //this will be automatic generate
     int regNo;
 
@@ -27,7 +28,7 @@ public class Student {
     Gender gender;
     
     @OneToOne(mappedBy = "student", cascade =  CascadeType.ALL) //this is how create parent of the child
-            //using cascade it will directly save when you will save
+            //using cascade it will directly save when you will save as parent to child
     LibraryCard libraryCard;  //the value of library card you should write it
 
 
