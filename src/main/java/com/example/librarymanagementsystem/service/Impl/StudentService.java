@@ -1,4 +1,4 @@
-package com.example.librarymanagementsystem.service;
+package com.example.librarymanagementsystem.service.Impl;
 
 import com.example.librarymanagementsystem.DTO.requestDTO.StudentRequest;
 import com.example.librarymanagementsystem.DTO.responseDTO.LibraryCardReponse;

@@ -4,7 +4,7 @@ import com.example.librarymanagementsystem.DTO.responseDTO.BookResponse;
 import com.example.librarymanagementsystem.Enum.Genre;
 import com.example.librarymanagementsystem.exception.AuthorNotFoundException;
 import com.example.librarymanagementsystem.model.Book;
-import com.example.librarymanagementsystem.service.BookService;
+import com.example.librarymanagementsystem.service.Impl.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
