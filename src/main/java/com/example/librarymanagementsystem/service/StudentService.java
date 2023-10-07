@@ -1,6 +1,7 @@
 package com.example.librarymanagementsystem.service;
 
 import com.example.librarymanagementsystem.DTO.requestDTO.StudentRequest;
+import com.example.librarymanagementsystem.DTO.responseDTO.LibraryCardReponse;
 import com.example.librarymanagementsystem.DTO.responseDTO.StudentRespose;
 import com.example.librarymanagementsystem.Enum.CardStatus;
 import com.example.librarymanagementsystem.Enum.Gender;
@@ -39,12 +40,18 @@ public class StudentService {
 
        Student savedStudent  = studentRepository.save(student);  //it will save both student and library
 
-        //saved model to response DTO
+//        saved model to response DTO
         StudentRespose studentRespose = new StudentRespose();
         studentRespose.setName(savedStudent.getName());
         studentRespose.setEmail(savedStudent.getEmail());
         studentRespose.setMessage("You have been registered");
-        studentRespose.setCardIssuedNo(savedStudent.getLibraryCard().getCardNo());
+
+        LibraryCardReponse cardReponse = new LibraryCardReponse();
+        cardReponse.setCardNo(savedStudent.getLibraryCard().getCardNo());
+        cardReponse.setIssueDate(savedStudent.getLibraryCard().getIssueDate());
+        cardReponse.setCardStatus(savedStudent.getLibraryCard().getCardStatus());
+
+        studentRespose.setLibraryCardReponse(cardReponse);
         return studentRespose;
     }
 

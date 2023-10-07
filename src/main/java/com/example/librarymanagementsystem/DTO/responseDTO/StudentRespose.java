@@ -1,5 +1,6 @@
 package com.example.librarymanagementsystem.DTO.responseDTO;
 
+import com.example.librarymanagementsystem.model.LibraryCard;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -16,5 +17,5 @@ public class StudentRespose {
 
     String message;
 
-    String cardIssuedNo;
+    LibraryCardReponse libraryCardReponse;
 }

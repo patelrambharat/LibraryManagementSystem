@@ -30,6 +30,6 @@ public class Student {
     @OneToOne(mappedBy = "student", cascade =  CascadeType.ALL) //this is how create parent of the child
             //using cascade it will directly save when you will save as parent to child
     LibraryCard libraryCard;  //the value of library card you should write it
-
+    
 
 }
