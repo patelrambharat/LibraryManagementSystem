@@ -14,6 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class LibraryCardReponse {
 
     String cardNo;   //we can generate unique card no using UUID  //we can make this one also primary

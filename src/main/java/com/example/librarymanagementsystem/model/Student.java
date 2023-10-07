@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Setter     //they will create public method
 @Entity   //to tell JPA that this is the model class
 @Table(name = "student_info")
+@Builder   //it is part of lambo
 public class Student {
     @Id   //this attribute is my primary key
     //data type of GenerationType --> Enum
