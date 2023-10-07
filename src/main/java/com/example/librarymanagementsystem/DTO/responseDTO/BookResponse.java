@@ -1,8 +1,6 @@
 package com.example.librarymanagementsystem.DTO.responseDTO;
 
 import com.example.librarymanagementsystem.Enum.Genre;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -11,7 +9,8 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Getter
 @Setter
-public class BookResponseDTO {
+@Builder
+public class BookResponse {
     String title;
 
     int noOfPages;
@@ -21,4 +20,6 @@ public class BookResponseDTO {
     double cost;
 
     String authorName;
+
+
 }

@@ -1,6 +1,6 @@
 package com.example.librarymanagementsystem.controller;
 
-import com.example.librarymanagementsystem.DTO.responseDTO.BookResponseDTO;
+import com.example.librarymanagementsystem.DTO.responseDTO.BookResponse;
 import com.example.librarymanagementsystem.Enum.Genre;
 import com.example.librarymanagementsystem.exception.AuthorNotFoundException;
 import com.example.librarymanagementsystem.model.Book;
@@ -32,13 +32,13 @@ public class BookController {
 
     //give me names of all the books of a particular genre and cost greater than x rs
     @GetMapping("/get-by-genre-cost")
-    public List<BookResponseDTO> getBooksByGenreAndCostGreaterThan(@RequestParam("genre") String genre, @RequestParam("cost") double cost){
+    public List<BookResponse> getBooksByGenreAndCostGreaterThan(@RequestParam("genre") String genre, @RequestParam("cost") double cost){
        return bookService.getBooksByGenreAndCostGreaterThan(genre, cost);
 
     }
 
     @GetMapping("/get-by-genre-cost-hql")
-    public List<BookResponseDTO> getBooksByGenreAndCostGreaterThanHQL(@RequestParam("genre") Genre genre, @RequestParam("cost") double cost){
+    public List<BookResponse> getBooksByGenreAndCostGreaterThanHQL(@RequestParam("genre") Genre genre, @RequestParam("cost") double cost){
         return bookService.getBooksByGenreAndCostGreaterThanHQL(genre, cost);
 
     }

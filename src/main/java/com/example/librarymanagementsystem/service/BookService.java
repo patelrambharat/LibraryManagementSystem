@@ -1,7 +1,8 @@
 package com.example.librarymanagementsystem.service;
 
-import com.example.librarymanagementsystem.DTO.responseDTO.BookResponseDTO;
+import com.example.librarymanagementsystem.DTO.responseDTO.BookResponse;
 import com.example.librarymanagementsystem.Enum.Genre;
+import com.example.librarymanagementsystem.Transformer.BookTransformer;
 import com.example.librarymanagementsystem.exception.AuthorNotFoundException;
 import com.example.librarymanagementsystem.model.Author;
 import com.example.librarymanagementsystem.model.Book;
@@ -37,40 +38,28 @@ public class BookService {
 
     }
 
-    public List<BookResponseDTO> getBooksByGenreAndCostGreaterThan(String genre, double cost) {
+    public List<BookResponse> getBooksByGenreAndCostGreaterThan(String genre, double cost) {
 
         List<Book> books = bookRepository.getBooksByGenreAndCostGreaterThan(genre, cost);
 
         //prepare the response
 
-        List<BookResponseDTO> response = new ArrayList<>();
+        List<BookResponse> response = new ArrayList<>();
         for(Book book : books){
-            BookResponseDTO bookResponseDTO = new BookResponseDTO();
-            bookResponseDTO.setTitle(book.getTitle());
-            bookResponseDTO.setCost(book.getCost());
-            bookResponseDTO.setGenre(book.getGenre());
-            bookResponseDTO.setNoOfPages(book.getNoOfPages());
-            bookResponseDTO.setAuthorName(book.getAuthor().getName());
-            response.add(bookResponseDTO);
+            response.add(BookTransformer.BookToBookResponse(book));
         }
 
         return response;
     }
 
-    public List<BookResponseDTO> getBooksByGenreAndCostGreaterThanHQL(Genre genre, double cost) {
+    public List<BookResponse> getBooksByGenreAndCostGreaterThanHQL(Genre genre, double cost) {
         List<Book> books = bookRepository.getBooksByGenreAndCostGreaterThanHQL(genre, cost);
 
         //prepare the response
 
-        List<BookResponseDTO> response = new ArrayList<>();
+        List<BookResponse> response = new ArrayList<>();
         for(Book book : books){
-            BookResponseDTO bookResponseDTO = new BookResponseDTO();
-            bookResponseDTO.setTitle(book.getTitle());
-            bookResponseDTO.setCost(book.getCost());
-            bookResponseDTO.setGenre(book.getGenre());
-            bookResponseDTO.setNoOfPages(book.getNoOfPages());
-            bookResponseDTO.setAuthorName(book.getAuthor().getName());
-            response.add(bookResponseDTO);
+            response.add(BookTransformer.BookToBookResponse(book));
         }
 
         return response;
