@@ -37,10 +37,10 @@ public class StudentService {
 
     }
 
-    public Student getStudent(int regNo) {
+    public StudentRespose getStudent(int regNo) {
         Optional<Student> studentOptional = studentRepository.findById(regNo);   //it my give you the res might not give the res
         if(studentOptional.isPresent()){
-            return studentOptional.get();
+            return StudentTransformer.StudentToStudentResponse(studentOptional.get());
         }
         return null;
     }

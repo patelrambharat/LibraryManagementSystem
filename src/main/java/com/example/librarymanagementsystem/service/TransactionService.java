@@ -11,6 +11,8 @@ import com.example.librarymanagementsystem.repository.BookRepository;
 import com.example.librarymanagementsystem.repository.StudentRepository;
 import com.example.librarymanagementsystem.repository.TransactionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -23,6 +25,9 @@ public class TransactionService {
     StudentRepository studentRepository;
     @Autowired
     BookRepository bookRepository;
+
+    @Autowired
+    JavaMailSender javaMailSender;
 
     @Autowired
     TransactionRepo transactionRepo;
@@ -62,6 +67,17 @@ public class TransactionService {
         Book savedBook = bookRepository.save(book);  //book and transaction
         Student saveStudent = studentRepository.save(student);  //student and transaction
 
+        //  send an email
+        String text = "Hi! " + student.getName() + " The below book has been issued to you\n" +
+                book.getTitle() + " \nThis is the transaction number: "+savedTransaction.getTransactionNumber();
+
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setFrom("patelrambharat@gmail.com");
+        simpleMailMessage.setTo(student.getEmail());
+        simpleMailMessage.setSubject("Congrats!! Book Issued");
+        simpleMailMessage.setText(text);
+
+        javaMailSender.send(simpleMailMessage);
         //prepare response
         return IssueBookResponse.builder()
                 .bookName(savedBook.getTitle())
@@ -75,5 +91,6 @@ public class TransactionService {
     }
 
     //return book api code yourself
-    //utility class the class whre all the member is static is called utility class 
+    //utility class the class where all the member is static is called utility class
+
 }

@@ -23,7 +23,7 @@ public class StudentController {
     }
     @GetMapping("/get")
     public ResponseEntity getStudent(@RequestParam("id") int regNo){
-       Student student =  studentService.getStudent(regNo);
+       StudentRespose student =  studentService.getStudent(regNo);
        if(student != null){
            return new ResponseEntity(student, HttpStatus.FOUND);
        }
